@@ -1,0 +1,21 @@
+[Unit]
+Description=Monero Full Node
+After=network.target
+
+[Service]
+User=xmr
+Group=xmr
+
+Type=forking
+PIDFile=/mnt/.bitmonero/monerod.pid
+
+ExecStart=/home/xmr/monero/monerod --detach --data-dir=/mnt/.bitmonero \
+    --no-igd --pidfile=/mnt/.bitmonero/monerod.pid \
+    --log-file=/mnt/.bitmonero/bitmonero.log \
+    --public-node --restricted-rpc --rpc-bind-ip 0.0.0.0 --confirm-external-bind
+
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
