@@ -10,9 +10,13 @@ Type=forking
 PIDFile=/mnt/.bitmonero/monerod.pid
 
 ExecStart=/home/xmr/monero/monerod --detach --data-dir=/mnt/.bitmonero \
+    --sync-pruned-blocks --prune-blockchain \
     --no-igd --pidfile=/mnt/.bitmonero/monerod.pid \
     --log-file=/mnt/.bitmonero/bitmonero.log \
-    --public-node --restricted-rpc --rpc-bind-ip 0.0.0.0 --confirm-external-bind
+    --public-node --restricted-rpc --rpc-bind-ip 0.0.0.0 --confirm-external-bind \
+    --ban-list /mnt/.bitmonero/block.txt \
+    --enable-dns-blocklist \
+    #--check-updates update
 
 Restart=always
 PrivateTmp=true

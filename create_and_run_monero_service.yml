@@ -3,18 +3,18 @@
   tasks:
   - name: copy file to srv
     copy: 
-      src: ./monerod.service
-      dest: /etc/systemd/system/monerod.service
+      src: ./monero.service
+      dest: /etc/systemd/system/monero.service
       mode: '0644'
-  - name: enable service monerod and ensure it is not masked
+  - name: enable service monero and ensure it is not masked
     systemd:
-      name: monerod
+      name: monero
       enabled: yes
       masked: no
   - name: Make sure a service is running
     systemd:
       state: started
-      name: monerod
+      name: monero
 
 
 # default dirs for "service" file in systemd are: /etc/systemd/system or /lib/systemd/system
